@@ -10,7 +10,10 @@ class ElasticsearchManagement:
 
     def create(self):
         body = self.get_index_body()
-        self.client.indices.create(index=self.index, body=body)
+        self.client.indices.create(self.index, body)
+
+    def delete(self):
+        self.client.indices.delete(self.index)
 
     def get_index_body(self):
         return {
